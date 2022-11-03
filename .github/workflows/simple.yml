@@ -25,17 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-        
       - name: POST sendMessage
+        shell: bash
         env: 
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
-          curl --location --request POST 'https://api.telegram.org/bot$BOT_TOKEN/sendMessage' \
+          curl --location --request POST 'https://api.telegram.org/'$BOT_TOKEN'/sendMessage' \
           --header 'Content-Type: application/json' \
           --data-raw '{
-          "chat_id": 443690125,
-          "text": "$GITHUB_RUN_ID"
+            "chat_id": 443690125,
+            "text": "$GITHUB_RUN_ID"
           }'
