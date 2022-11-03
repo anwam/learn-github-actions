@@ -34,5 +34,5 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{
             "chat_id": 443690125,
-            "text": "$GITHUB_RUN_ID"
+            "text": ${{ github.repositoryUrl }}
           }'
